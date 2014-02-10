@@ -32,12 +32,16 @@ public class BikerServiceImpl implements BikerService {
 	public Biker getBiker(String email) {
 		return BikerDAO.getBiker(email);
 	}
+	
+	public Biker getBiker(String email,String password) {
+		return BikerDAO.getBiker(email,password);
+	}
 
 	public void deleteBiker(int id) {
 		BikerDAO.deleteBiker(id);
 	}
 
-	public List  getBikers() {
+	public List<Biker>  getBikers() {
 		return BikerDAO.getBikers();
 	}
 

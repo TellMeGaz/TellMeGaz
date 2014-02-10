@@ -37,10 +37,27 @@ public class BikerDAOImpl implements BikerDAO {
 	}
 	
 	public Biker getBiker(String email) {
-		Biker Biker = (Biker) getCurrentSession().get(Biker.class, email);
-		return Biker;
+		org.hibernate.Query query=  getCurrentSession().createQuery("from Biker where email=:email");
+		query.setParameter("email", email);
+		List<Biker> list=query.list();
+		if (list.size()==0) {
+			return null;
+		} else return list.get(0);
 	}
 
+	
+	public Biker getBiker(String email, String password) {
+		Biker biker = getBiker(email);
+
+		if (biker != null) {
+			if (biker.getPassword().equals(password)) {
+				return biker;
+			}
+
+		}
+		return null;
+
+	}
 
 	public void deleteBiker(int id) {
 		Biker Biker = getBiker(id);
