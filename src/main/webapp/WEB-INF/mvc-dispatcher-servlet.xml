@@ -20,7 +20,7 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-	<context:component-scan base-package="com.gaz.controller,com.gaz.service,com.gaz.dao,com.gaz.model" />
+	<context:component-scan base-package="com.gaz.controller,com.gaz.service,com.gaz.dao,com.gaz.model,com.gaz.form" />
 	
   <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
@@ -51,8 +51,17 @@
   </bean>
   <tx:annotation-driven transaction-manager="transactionManager"/>
   
+  <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+		<list>
+			<value>messages_fr</value>
+			<value>errors_fr</value>
+		</list>
+		</property>
+	</bean>
   
   
+ 
  
  
 </beans>

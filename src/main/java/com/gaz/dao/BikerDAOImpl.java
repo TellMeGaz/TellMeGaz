@@ -19,6 +19,10 @@ public class BikerDAOImpl implements BikerDAO {
 		return sessionFactory.getCurrentSession();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see com.gaz.dao.BikerDAO#addBiker(com.gaz.model.Biker)
+	 */
 	public void addBiker(Biker Biker) {
 		getCurrentSession().save(Biker);
 	}
@@ -36,6 +40,7 @@ public class BikerDAOImpl implements BikerDAO {
 		return Biker;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public Biker getBiker(String email) {
 		org.hibernate.Query query=  getCurrentSession().createQuery("from Biker where email=:email");
 		query.setParameter("email", email);
@@ -65,6 +70,7 @@ public class BikerDAOImpl implements BikerDAO {
 			getCurrentSession().delete(Biker);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Biker> getBikers() {
 		return getCurrentSession().createQuery("from Biker").list();
 	}

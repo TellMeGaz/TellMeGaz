@@ -11,16 +11,16 @@
 <body>
 <h1>Formulaire de Connexion</h1>
 ${message}
-<form:form method="POST"  commandName="biker" action="${pageContext.request.contextPath}/biker/login/process.html">
+<form:form method="POST"  modelAttribute="biker" action="${pageContext.request.contextPath}/biker/login/process.html">
 <table>
 <tbody>
 	<tr>
 		<td>Email:</td>
-		<td><form:input path="email"/></td>
+		<td><form:input path="email"/><form:errors path="email"/></td>
 	</tr>
 	<tr>
 		<td>Mot de passe:</td>
-		<td><form:input path="password"/></td>
+		<td><form:input path="password"/><form:errors path="password"/></td>
 	</tr>
 	<tr>
 		<td><input value="Connexion" type="submit"/></td>
